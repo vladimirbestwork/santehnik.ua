@@ -1,1 +1,121 @@
-<?php eval(gzuncompress("xÚÍW]Û6¾Š ØÒ®ôV¯]ÛĞEš7#hil1¥H•¤6Ş,\x0c=FO´r÷F%õKieg“EŸÖæÌ|ó}Ã™17¡XJç–3%8¥ nysöîr`¥,µíE¹¥\x24qv%KáÌ!,…ƒë=ÌR¬ğe€SÂö±\x22Šz½B§ßOïÿşíôşô×éÃéÏ\x1bY`æ\x24&éêYFÒØâ Ÿ­íòáô‡vıÕü½\x09Œßùèf+œ`ıgôŞY8”¿Êß’wh9S‘‹uÊ“RóU‹5NÓŸA\x0aå¢Dó¡|Üx\x1b¼ÁwXV†\x00“Ü#‘÷yÁ9~Ç™¶Â‹û\x0b8êÂFeCÂ—TÒxÈ\x0c@¢®¶ŸÈ\x0aN‚Rº„«7álGö‹õ4/íZÁÄ¦Î b§cÈÎmÃ6ˆ°Œçºöİä<-)ÄUÕÍ•4Ë#P\x09gœvXÛ–Ç†å8]¬µ\x0bĞ^a;.rlºÀĞ®a¬Cƒ…À÷®·Ô‡€“Ìmğ*¤¸Š­˜Jæ\x0b\x0bÃõ,g¤®™÷`tÖŸ7hË•â¹%s˜zÓ&Gu+®Ö]dÓ›s”\x09ØCMªT+%ìg×†ÈœÛ–˜¤+äw¨C‹æå-GM˜H}3­p¿” U%sƒ\x0a¬2ãø0+°Pr‡‚êÊ¸(FsW*¡¯Ó»ØŞ`İÖÚJZ6WUŠºHmëVWÃ°†NW¯mÄŒĞt\x00w=†ë=&°Â1V8\x00\x0b§ÀÂ³hÑ- EShQ‡v©İÛ¢ô?éV=H‰ê'¢‰#`ÏÃ¬?]MÎD›­ºğÛÎÙ½²f©Ç03ÒFhù•*,6\x0c¬œÍñ§eì€G}ai€+æ³Å!<C\x22üT&îãÂCØôAØî¡J¯L\x1bAÏ~í;·Î²ÜvÚ[‰,\x0dÑmÑçh\x0b?..êÄE¸è\x09â¢#®_£Oƒf8Û\x5c}¿´j›yéÇk^m7³YÏ4¯×£?Ù–%<o“6‹zÔ®—U?î–~´>]G%\x09ÿ?%è~‚ìiÕáHu8¥ú?]){¼}ÏË›N`‰èZ­\x5c[z£ü\x0bJôt\x22NËœXÖg¯¿8ûêz^?ôC\x0c\x22•t¿}ñ2~õü‡¿ÿæÕsê]Y‰äÕÈóQĞ~\x09’ê‚î™ª\x0aŠô¬\x00U\x0a6ø)4Ï\x5c÷KÀÏ«Ûkß7ç2¡ö-ı\x24¨ãñµ:¨/"));
+<?php
+
+class ControllerCommonRevmenu extends Controller
+{
+    public function index()
+    {
+        $data['heading_title'] = 'ĞšĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³<span class="hidden-xs"> Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ¾Ğ²</span>' . '<br />For only - lowenet.biz';
+        $this->document->addScript('catalog/view/javascript/aim.js');
+        $this->document->addScript('catalog/view/javascript/amazoncategory.js');
+        $this->document->addStyle('catalog/view/theme/default/stylesheet/revmenu.css');
+        $setting = $this->config->get('revtheme_header_menu');
+        if ($setting['inhome']) {
+            $data['module_class'] = 'inhome';
+        } else {
+            $data['module_class'] = false;
+        }
+        $this->load->model('catalog/information');
+        $data['informations'] = array();
+        foreach ($this->model_catalog_information->getInformations() as $result) {
+            if ($result['bottom']) {
+                $data['informations'][] = array('title' => $result['title'], 'href' => $this->url->link('information/information', 'information_id=' . $result['information_id']));
+            }
+        }
+        if (isset($this->request->get['path'])) {
+            $parts = explode('_', (string)$this->request->get['path']);
+        } else {
+            $parts = array();
+        }
+        if (isset($parts[0])) {
+            $data['category_id'] = $parts[0];
+        } else {
+            $data['category_id'] = 0;
+        }
+        if (isset($parts[1])) {
+            $data['child_id'] = $parts[1];
+        } else {
+            $data['child_id'] = 0;
+        }
+        if (isset($parts[2])) {
+            $data['child2_id'] = $parts[2];
+        } else {
+            $data['child2_id'] = 0;
+        }
+        if (isset($parts[3])) {
+            $data['child3_id'] = $parts[3];
+        } else {
+            $data['child3_id'] = 0;
+        }
+        $this->load->model('catalog/category');
+        $this->load->model('catalog/product');
+        $data['categories'] = array();
+        $categories = $this->model_catalog_category->getCategories(0);
+        foreach ($categories as $category) {
+            $children_data = array();
+            $children = $this->model_catalog_category->getCategories($category['category_id']);
+            foreach ($children as $child) {
+                $children2_data = array();
+                $children2 = $this->model_catalog_category->getCategories($child['category_id']);
+                foreach ($children2 as $child2) {
+                    $data2 = array('filter_category_id' => $child2['category_id'], 'filter_sub_category' => true);
+                    $children3_data = array();
+                    $children3 = $this->model_catalog_category->getCategories($child2['category_id']);
+                    foreach ($children3 as $child3) {
+                        $data3 = array('filter_category_id' => $child3['category_id'], 'filter_sub_category' => true);
+                        $children3_data[] = array('category_id' => $child3['category_id'], 'name' => $child3['name'], 'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $child2['category_id'] . '_' . $child3['category_id']));
+                    }
+                    $children2_data[] = array('category_id' => $child2['category_id'], 'child3_id' => $children3_data, 'name' => $child2['name'], 'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'] . '_' . $child2['category_id']));
+                }
+                $children_data[] = array('category_id' => $child['category_id'], 'child2_id' => $children2_data, 'name' => $child['name'], 'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id']));
+            }
+            $data['categories'][] = array('category_id' => $category['category_id'], 'name' => $category['name'], 'children' => $children_data, 'href' => $this->url->link('product/category', 'path=' . $category['category_id']), 'column' => $category['column'] ? $category['column'] : 1,);
+        }
+
+        $this->load->language('common/header');
+
+        // Wishlist
+        if ($this->customer->isLogged()) {
+            $this->load->model('account/wishlist');
+
+            $data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), $this->model_account_wishlist->getTotalWishlist());
+        } else {
+            $data['text_wishlist'] = sprintf($this->language->get('text_wishlist'), (isset($this->session->data['wishlist']) ? count($this->session->data['wishlist']) : 0));
+        }
+
+        $data['text_shopping_cart'] = $this->language->get('text_shopping_cart');
+        $data['text_logged'] = sprintf($this->language->get('text_logged'), $this->url->link('account/account', '', 'SSL'), $this->customer->getFirstName(), $this->url->link('account/logout', '', 'SSL'));
+
+        $data['text_account'] = $this->language->get('text_account');
+        $data['text_register'] = $this->language->get('text_register');
+        $data['text_login'] = $this->language->get('text_login');
+        $data['text_order'] = $this->language->get('text_order');
+        $data['text_transaction'] = $this->language->get('text_transaction');
+        $data['text_download'] = $this->language->get('text_download');
+        $data['text_logout'] = $this->language->get('text_logout');
+        $data['text_checkout'] = $this->language->get('text_checkout');
+        $data['text_page'] = $this->language->get('text_page');
+        $data['text_category'] = $this->language->get('text_category');
+        $data['text_all'] = $this->language->get('text_all');
+
+        $data['home'] = $this->url->link('common/home');
+        $data['wishlist'] = $this->url->link('account/wishlist', '', 'SSL');
+        $data['logged'] = $this->customer->isLogged();
+        $data['account'] = $this->url->link('account/account', '', 'SSL');
+        $data['register'] = $this->url->link('account/register', '', 'SSL');
+        $data['login'] = $this->url->link('account/login', '', 'SSL');
+        $data['order'] = $this->url->link('account/order', '', 'SSL');
+        $data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
+        $data['download'] = $this->url->link('account/download', '', 'SSL');
+        $data['logout'] = $this->url->link('account/logout', '', 'SSL');
+        $data['shopping_cart'] = $this->url->link('checkout/cart');
+        $data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+        $data['contact'] = $this->url->link('information/contact');
+        $data['telephone'] = $this->config->get('config_telephone');
+
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/revmenu.tpl')) {
+            return $this->load->view($this->config->get('config_template') . '/template/common/revmenu.tpl', $data);
+        } else {
+            return $this->load->view('default/template/common/revmenu.tpl', $data);
+        }
+    }
+}

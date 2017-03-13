@@ -67,43 +67,32 @@
 		        <?php echo implode('', $bw_module_groups['bw_catmenu']); ?>
 		        <?php } ?>
 				</div>
-	<div class="col-sm-12 col-md-1 col-lg-1 upmenu">
-     
-         <ul class="pav-verticalmenu list-inline pull-right">
-			        
-			        <li class="dropdown for-menu"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="menu-title-1 hidden-xs hidden-sm hidden-md">Войти</span> <b class="caret"></b></a>
-			          <ul class="dropdown-menu dropdown-menu-right">
-			            <?php if ($logged) { ?>
-			            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
-			            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
-			            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
-			            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
-			            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
-			            <?php } else { ?>
-			            <li><a href="<?php echo $register; ?>"><i class="fa fa-user-plus"></i> <?php echo $text_register; ?></a></li>
-			            <li><a href="<?php echo $login; ?>"><i class="fa fa-sign-in"></i> <?php echo $text_login; ?></a></li>
-			            <?php } ?>
-				<li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <?php echo $text_wishlist; ?></a></li>
-				<li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"></i> <?php echo $text_shopping_cart; ?></a></li>
-				<li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <?php echo $text_checkout; ?></a></li>
-			          </ul>
-			        </li>
-			      </ul>
+      <div class="col-sm-12 col-md-1 col-lg-1 upmenu">
+
+       <ul class="pav-verticalmenu list-inline pull-right">
+        <li class="dropdown for-menu"><a href="<?php echo $account; ?>" title="<?php echo $text_account; ?>" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="menu-title-1 hidden-xs hidden-sm hidden-md">Войти</span> <b class="caret"></b></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <?php if ($logged) { ?>
+            <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+            <li><a href="<?php echo $order; ?>"><?php echo $text_order; ?></a></li>
+            <li><a href="<?php echo $transaction; ?>"><?php echo $text_transaction; ?></a></li>
+            <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+            <li><a href="<?php echo $logout; ?>"><?php echo $text_logout; ?></a></li>
+            <?php } else { ?>
+            <li><a href="<?php echo $register; ?>"><i class="fa fa-user-plus"></i> <?php echo $text_register; ?></a></li>
+            <li><a href="<?php echo $login; ?>"><i class="fa fa-sign-in"></i> <?php echo $text_login; ?></a></li>
+            <?php } ?>
+            <li><a href="<?php echo $wishlist; ?>" id="wishlist-total" title="<?php echo $text_wishlist; ?>"><i class="fa fa-heart"></i> <?php echo $text_wishlist; ?></a></li>
+            <li><a href="<?php echo $shopping_cart; ?>" title="<?php echo $text_shopping_cart; ?>"></i> <?php echo $text_shopping_cart; ?></a></li>
+            <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <?php echo $text_checkout; ?></a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
+  </div>
 
 
 			</div>
 		</div>
 	</div>
 </div>
-<script type="text/javascript"><!--
-function autocol_cats(cat_id, cat_col) {
-	$('.ul_block'+cat_id).autocolumnlist({  
-		columns: cat_col,
-		min: 1
-	});
-}
-<?php foreach ($categories as $category) { ?> 
-	autocol_cats(<?php echo $category['category_id']; ?>, <?php echo $category['column']; ?>);
-<?php } ?>	  
-//--></script>
