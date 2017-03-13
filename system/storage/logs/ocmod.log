@@ -85,3 +85,72 @@ LINE: 56
 CODE: <div class="col-sm-3 text-right snetwork">
 NOT FOUND!
 ----------------------------------------------------------------
+2017-03-13 11:14:20 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+MOD: Amazon menu
+FILE: catalog/controller/common/header.php
+CODE: $data['title']
+LINE: 29
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <nav id="menu" class="navbar">
+LINE: 101
+----------------------------------------------------------------
+MOD: Local copy OCMOD by iSenseLabs
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 132
+CODE: public function unzip() {
+LINE: 293
+----------------------------------------------------------------
+MOD: Дополнительные позиции BWtheme
+FILE: admin/controller/design/layout.php
+CODE: $this->response->setOutput($this->load->view('design/layout_form.tpl', $data));
+LINE: 408
+CODE: $data['text_column_right'] = $this->language->get('text_column_right');
+LINE: 277
+FILE: admin/language/english/design/layout.php
+CODE: $_['text_column_right']
+LINE: 21
+FILE: admin/language/russian/design/layout.php
+CODE: $_['text_column_right']
+LINE: 21
+CODE: $_['text_column_right']
+LINE: 29
+FILE: admin/view/template/design/layout_form.tpl
+CODE: html += '    <option value="column_right"><?php echo $text_column_right; ?></option>';
+LINE: 185
+CODE: <option value="column_right"><?php echo $text_column_right; ?></option>
+LINE: 129
+FILE: catalog/controller/common/column_left.php
+CODE: public function index() {
+LINE: 93
+CODE: <body class="<?php echo $class; ?>">
+LINE: 53
+CODE: <div class="upmenu"></div>
+NOT FOUND!
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer>
+LINE: 5
+CODE: <div class="container">
+LINE: 11
+CODE: <?php echo $powered; ?>
+LINE: 56
+CODE: <div class="col-sm-3 text-right snetwork">
+NOT FOUND!
+----------------------------------------------------------------
