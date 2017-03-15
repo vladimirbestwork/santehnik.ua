@@ -1,15 +1,5 @@
-
-        <?php global $registry; $bw_module_groups = $registry->get('bw_module_groups'); if (!empty($bw_module_groups['bw_ft'])) { ?>
-        <?php echo implode('', $bw_module_groups['bw_ft']); ?>
-        <?php } ?>      
-      
 <footer>
   <div class="container">
-
-        <?php global $registry; $bw_module_groups = $registry->get('bw_module_groups'); if (!empty($bw_module_groups['bw_fct'])) { ?>
-        <?php echo implode('', $bw_module_groups['bw_fct']); ?>
-        <?php } ?>      
-      
     <div class="row">
       <?php if ($informations) { ?>
       <div class="col-sm-3">
@@ -50,11 +40,6 @@
     </div>
     <hr>
     <p><?php echo $powered; ?></p>
-
-        <?php global $registry; $bw_module_groups = $registry->get('bw_module_groups'); if (!empty($bw_module_groups['bw_fcb'])) { ?>
-        <?php echo implode('', $bw_module_groups['bw_fcb']); ?>
-        <?php } ?>      
-      
   </div>
 </footer>
 
