@@ -88,8 +88,12 @@ class ControllerCommonHeader extends Controller {
 		$data['transaction'] = $this->url->link('account/transaction', '', 'SSL');
 		$data['download'] = $this->url->link('account/download', '', 'SSL');
 		$data['logout'] = $this->url->link('account/logout', '', 'SSL');
-		$data['shopping_cart'] = $this->url->link('checkout/cart');
-		$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+		
+            $data['shopping_cart'] = $this->url->link('checkout/buy');
+            
+		
+            $data['checkout'] = $this->url->link('checkout/buy', '', 'SSL').'#checkout-f';
+            
 		$data['contact'] = $this->url->link('information/contact');
 		$data['telephone'] = $this->config->get('config_telephone');
 

@@ -154,3 +154,127 @@ LINE: 56
 CODE: <div class="col-sm-3 text-right snetwork">
 NOT FOUND!
 ----------------------------------------------------------------
+2017-03-15 17:45:14 - MOD: Modification Default
+FILE: system/engine/action.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 39
+FILE: system/engine/loader.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 20
+LINE: 59
+LINE: 80
+LINE: 99
+FILE: system/library/config.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 23
+FILE: system/library/language.php
+REGEX: ~(require|include)(_once)?\(([^)]+)~
+LINE: 25
+LINE: 31
+----------------------------------------------------------------
+MOD: Amazon menu
+FILE: catalog/controller/common/header.php
+CODE: $data['title']
+LINE: 29
+FILE: catalog/view/theme/default/template/common/header.tpl
+CODE: <nav id="menu" class="navbar">
+LINE: 101
+----------------------------------------------------------------
+MOD: Local copy OCMOD by iSenseLabs
+FILE: admin/controller/extension/installer.php
+CODE: 'url'  => str_replace('&amp;', '&', $this->url->link('extension/installer/ftp', 'token=' . $this->session->data['token'],
+LINE: 132
+CODE: public function unzip() {
+LINE: 293
+----------------------------------------------------------------
+MOD: Short Checkout (ocprofi.com)
+FILE: catalog/controller/total/coupon.php
+CODE: $json['redirect'] = $this->url->link('checkout/cart');
+LINE: 52
+FILE: catalog/controller/total/voucher.php
+CODE: $json['redirect'] = $this->url->link('checkout/cart');
+LINE: 50
+FILE: catalog/controller/total/shipping.php
+CODE: $json['redirect'] = $this->url->link('checkout/cart');
+LINE: 198
+FILE: catalog/controller/checkout/confirm.php
+CODE: $redirect = $this->url->link('checkout/checkout', '', true);
+NOT FOUND!
+CODE: $redirect = $this->url->link('checkout/checkout', '', 'SSL');
+LINE: 8
+LINE: 13
+LINE: 23
+LINE: 28
+CODE: $redirect = $this->url->link('checkout/cart');
+LINE: 41
+LINE: 57
+FILE: catalog/controller/common/cart.php
+CODE: $data['cart'] = $this->url->link('checkout/cart');
+LINE: 134
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', true);
+NOT FOUND!
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+LINE: 137
+CODE: $data['shopping_cart'] = $this->url->link('checkout/cart');
+LINE: 88
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', true);
+NOT FOUND!
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+LINE: 91
+FILE: catalog/controller/checkout/cart.php
+CODE: $json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
+LINE: 343
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', true);
+NOT FOUND!
+CODE: $data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
+LINE: 230
+FILE: catalog/model/checkout/order.php
+CODE: $mail->setTo($order_info['email']);
+LINE: 682
+LINE: 857
+CODE: $mail->send();
+LINE: 691
+CODE: $mail->send();
+LINE: 868
+FILE: catalog/controller/checkout/success.php
+CODE: if (isset($this->session->data['order_id'])) {
+LINE: 8
+CODE: $data['continue'] = $this->url->link('common/home');
+LINE: 103
+----------------------------------------------------------------
+MOD: Дополнительные позиции BWtheme
+FILE: admin/controller/design/layout.php
+CODE: $this->response->setOutput($this->load->view('design/layout_form.tpl', $data));
+LINE: 408
+CODE: $data['text_column_right'] = $this->language->get('text_column_right');
+LINE: 277
+FILE: admin/language/english/design/layout.php
+CODE: $_['text_column_right']
+LINE: 21
+FILE: admin/language/russian/design/layout.php
+CODE: $_['text_column_right']
+LINE: 21
+CODE: $_['text_column_right']
+LINE: 29
+FILE: admin/view/template/design/layout_form.tpl
+CODE: html += '    <option value="column_right"><?php echo $text_column_right; ?></option>';
+LINE: 185
+CODE: <option value="column_right"><?php echo $text_column_right; ?></option>
+LINE: 129
+FILE: catalog/controller/common/column_left.php
+CODE: public function index() {
+LINE: 93
+CODE: <body class="<?php echo $class; ?>">
+LINE: 53
+CODE: <div class="upmenu"></div>
+NOT FOUND!
+FILE: catalog/view/theme/default/template/common/footer.tpl
+CODE: <footer>
+LINE: 5
+CODE: <div class="container">
+LINE: 11
+CODE: <?php echo $powered; ?>
+LINE: 56
+CODE: <div class="col-sm-3 text-right snetwork">
+NOT FOUND!
+----------------------------------------------------------------
